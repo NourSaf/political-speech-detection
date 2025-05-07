@@ -1,13 +1,14 @@
 from gensim.models.doc2vec import Doc2Vec
 import pandas as pd
 import nltk
+nltk.download('punkt_tab')
 import gradio as gr
 
 # Load the training data
 data = pd.read_json('data/training_data.json')
 
 # Load the pre-trained model
-model = Doc2Vec.load("models/political_doc2vec.model")
+model = Doc2Vec.load("model/political_doc2vec.model")
 
 # Function to infer vector for a new piece of text
 def infer_vector(model, text):
@@ -40,19 +41,30 @@ def similar_docs_2_scores(similar_docs):
     party = doc_highest_score[0]
     similarity_score = (doc_highest_score[1] / 20) * 100
 
-    return party, similarity_score, transcipt
+    full_score = sum(scores.values())
+    afd_score = scores["AFD"]
+    die_linke_score = scores["Die Linke"]
+    right_confidence = round((afd_score / full_score) * 100, 2)
+    left_confidence = round(die_linke_score / full_score * 100, 2)
+
+    return party, similarity_score,right_confidence, left_confidence, transcipt
 
 # Gradio interface function
 def results(input_text):
     similar_docs = get_similar_speeches(model, input_text)
-    doc_highest_score = similar_docs_2_scores(similar_docs)
-    party, score, transcipt = doc_highest_score 
-    return party, score, transcipt
+    party, similarity_score, right_confidence, left_confidence, transcript = similar_docs_2_scores(similar_docs)
+    return party, similarity_score, right_confidence, left_confidence, transcript
 
 # Setting up Gradio interface
 iface = gr.Interface(fn=results, 
                      inputs="text", 
-                     outputs=["text", "number", "text"],
+                     outputs=[
+                         gr.Text(label="Political Party"),
+                         gr.Number(label="Similarity Score"),
+                         gr.Number(label="Right-Wing Confidence"),
+                         gr.Number(label="Left-Wing Confidence"),
+                         gr.Text(label="Similar Transcript")
+                     ],
                      title="Political Speech Classifier",
                      description="Enter a political speech to classify its party affiliation and get the most similar transcript.")
 
