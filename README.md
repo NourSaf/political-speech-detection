@@ -105,7 +105,37 @@ def similar_docs_2_scores(similar_docs):
 
 #### 📊 Results
 - Evaluated both approaches using **confusion matrices**.
+
+![alt text](plots/models_comparison.png)
+
+
 - The **Doc2Vec similarity-based method** slightly outperformed the RandomForest model in classifying test data.
+
+#### Classification Performance Metrics
+
+| Metric | Class | Doc2Vec Similarity | RandomForest Classifier |
+|--------|-------|-------------------|------------------------|
+| Precision | Die Linke | 0.93 | 0.94 |
+|  | AFD | 0.99 | 0.92 |
+| Recall | Die Linke | 0.99 | 0.89 |
+|  | AFD | 0.95 | 0.96 |
+| F1-Score | Die Linke | 0.96 | 0.91 |
+|  | AFD | 0.97 | 0.94 |
+| Support | Die Linke | 474 | 474 |
+|  | AFD | 668 | 668 |
+| **Accuracy** |  | **0.97** | **0.93** |
+| Macro Avg | | 0.96/0.97/0.97 | 0.93/0.92/0.93 |
+| Weighted Avg | | 0.97/0.97/0.97 | 0.93/0.93/0.93 |
+
+Overall Accuracy - Doc2Vec: 0.9658 <br>
+Overall Accuracy - RandomForest: 0.9291
+
+
+Overall Accuracy - Doc2Vec: 0.9658 <br>
+Overall Accuracy - RandomForest: 0.9291
+
+Both models performed well on the test data. <br>
+The difference bettween the two models that `RandomForest` classifier have higher confidences score that are more than 50%, while the doc2vec similarity confidence approach is rarely above 50%. This might be due to the basic and manule confidence score function developed. This should be studied further. However, the overall performences are well! the model is predicting right most of the time, which is better than random guessing. 
 
 ---
 
