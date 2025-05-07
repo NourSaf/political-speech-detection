@@ -135,7 +135,7 @@ Overall Accuracy - Doc2Vec: 0.9658 <br>
 Overall Accuracy - RandomForest: 0.9291
 
 Both models performed well on the test data. <br>
-The difference bettween the two models that `RandomForest` classifier have higher confidences score that are more than 50%, while the doc2vec similarity confidence approach is rarely above 50%. This might be due to the basic and manule confidence score function developed. This should be studied further. However, the overall performences are well! the model is predicting right most of the time, which is better than random guessing. 
+The difference bettween the two models that `RandomForest` classifier have higher confidences score that are more than 50%, while the doc2vec similarity confidence approach is rarely above 50%. This might be due to the basic and manule confidence score function developed. This should be studied further. However, the overall performences are well! the model is predicting right most of the time, which is better than random guessing.
 
 ---
 
@@ -145,7 +145,7 @@ The difference bettween the two models that `RandomForest` classifier have highe
 - Deployed the app on **Hugging Face Spaces**:  
   🔗 [Division Detector AI](https://huggingface.co/spaces/NourSafadi95/right-detector-ai)
 - Integrated model into a **Vue.js** web app for interactive exploration and use.
-
+- The model UI is at the end of this page: https://noursaf.github.io/MSDV-thesis-25/ 
 ---
 
 ## 🚀 Usage
