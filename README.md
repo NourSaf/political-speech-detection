@@ -42,6 +42,33 @@ All additional metadata was removed during preprocessing.
 - Identified distinct linguistic patterns between political parties.
 - Examined speech length distribution and token-level linguistic features.
 
+#### Document Statistics
+
+| Metric | Value |
+|--------|-------|
+| Count (documents) | 1,912 |
+| Mean (characters) | 9,705.84 |
+| Std Dev (characters) | 17,766.66 |
+| Min (characters) | 76.00 |
+| 25% (characters) | 2,972.00 |
+| 50% (characters) | 4,397.00 |
+| 75% (characters) | 8,409.50 |
+| Max (characters) | 263,360.00 |
+
+#### Word Statistics
+
+| Metric | Value |
+|--------|-------|
+| Count (documents) | 1,912 |
+| Mean (words) | 1,498.29 |
+| Std Dev (words) | 2,811.99 |
+| Min (words) | 11.00 |
+| 25% (words) | 432.75 |
+| 50% (words) | 640.50 |
+| 75% (words) | 1,275.00 |
+| Max (words) | 41,797.00 |
+
+![alt text](image.png)
 ---
 
 ### 4. Model Development – Phase 1
@@ -77,6 +104,24 @@ def similar_docs_2_scores(similar_docs):
 - Standardized speech lengths by chunking longer texts to a maximum of **600 words**.
 - Removed **German stopwords** to improve signal quality.
 - Applied more consistent and cleaner **tokenization** logic.
+
+![alt text](image-1.png)
+
+#### Statistics After Preprocessing
+
+| Statistic | Character Length | Word Count |
+|-----------|------------------|------------|
+| Count (new all documents) | 5,709 | 5,709 |
+| Mean | 3,249.88 | 501.79 |
+| Std | 1,121.61 | 172.74 |
+| Min | 5 | 1 |
+| 25% | 3,136 | 468 |
+| 50% | 3,728 | 600 |
+| 75% | 3,921 | 600 |
+| Max | 4,947 | 600 |
+
+
+![alt text](image-2.png)
 
 ##### 🧠 Enhanced Doc2Vec Training
 - Switched to **PV-DBOW** architecture:
