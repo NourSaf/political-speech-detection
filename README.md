@@ -207,7 +207,7 @@ To use the model:
 
 ## Dependencies
 
-- Python 3.8+
+- `Python 3.8+`
 - `gensim`
 - `nltk`
 - `scikit-learn`
