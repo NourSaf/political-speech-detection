@@ -1,4 +1,4 @@
-# Political-Speech-Model
+# Political Speech Classification
 
 ## Overview
 
